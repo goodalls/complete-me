@@ -74,4 +74,19 @@ describe('TRIE', () => {
     });
   });
 
+  describe('POPULATE', () => {
+    it('should', () => {
+      trie.populate();
+      expect(trie.length).to.equal(235886);
+    });
+  });
+
 });//end of trie
+
+// completion.populate(dictionary)
+
+// completion.count()
+// => 235886
+
+// completion.suggest("piz")
+// => ["pize", "pizza", "pizzeria", "pizzicato", "pizzle"]
