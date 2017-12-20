@@ -14,8 +14,9 @@ describe('TRIE', () => {
 
   describe('INSERT', () => {
     it('should add "pizza" as letters into the trie', () => {
-      
+
       trie.insert("pizza");
+      // console.log( JSON.stringify(trie, null, 4) );
       expect(trie.head.children.p.data).to.equal('p');
       expect(trie.head.children.p.children.i.data).to.equal('i');
     });
