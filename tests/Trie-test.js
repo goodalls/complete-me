@@ -64,25 +64,14 @@ describe('TRIE', () => {
       expect(trie.suggest('ap')).to.deep.equal([ 'apple', 'appitizer' ]);
     });
   });
- 
 
+  describe('isWordCheck', ()=>{
+    it('should return true or false if word is entered', ()=> {
+      expect(trie.isWordCheck('apple')).to.equal(false);
+      trie.insert('apple');
+      expect(trie.isWordCheck('apple')).to.equal(true);
 
+    });
+  });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-});
+});//end of trie
