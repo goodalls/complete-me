@@ -84,7 +84,7 @@ describe('TRIE', () => {
   });
 
   describe('FAVORED', () => {
-    it.only('should', () => {
+    it('should', () => {
       trie.insert('pizza');
       trie.insert('pizzeria');
       expect(trie.suggest('piz')).to.deep.equal([ 'pizza', 'pizzeria']);
@@ -93,6 +93,15 @@ describe('TRIE', () => {
     });
   });
 
+  describe('DELETE', () => {
+    it('should remove a word', () => {
+      trie.insert('pizza');
+      trie.insert('pizzeria');
+      expect(trie.suggest('piz')).to.deep.equal([ 'pizza', 'pizzeria']);
+      trie.delete('pizza');
+      expect(trie.suggest('piz')).to.deep.equal(['pizzeria']);
+    });
+  });
 
 });//end of trie
 
