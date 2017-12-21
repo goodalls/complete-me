@@ -98,6 +98,8 @@ describe('TRIE', () => {
       expect(trie.suggest('piz')).to.deep.equal(['pize', 'pizza', 'pizzeria', 'pizzicato', 'pizzle']);
       trie.delete('pizza');
       expect(trie.suggest('piz')).to.deep.equal(['pize', 'pizzeria', 'pizzicato', 'pizzle']);
+      trie.delete('pizzle');
+      expect(trie.suggest('piz')).to.deep.equal(['pize', 'pizzeria', 'pizzicato']);
     });
   });
 });  
