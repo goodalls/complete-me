@@ -16,7 +16,6 @@ describe('TRIE', () => {
     it('should add "pizza" as letters into the trie', () => {
 
       trie.insert("pizza");
-      // console.log( JSON.stringify(trie, null, 4) );
       expect(trie.head.children.p.data).to.equal('p');
       expect(trie.head.children.p.children.i.data).to.equal('i');
     });
@@ -91,6 +90,14 @@ describe('TRIE', () => {
       expect(trie.suggest('piz')).to.deep.equal([ 'pizza', 'pizzeria']);
       trie.delete('pizza');
       expect(trie.suggest('piz')).to.deep.equal(['pizzeria']);
+    });
+
+    it('should delete/remove a word', () => {
+      trie.populate();
+      trie.suggest("piz");
+      expect(trie.suggest('piz')).to.deep.equal(['pize', 'pizza', 'pizzeria', 'pizzicato', 'pizzle']);
+      trie.delete("pizza");
+      expect(trie.suggest('piz')).to.deep.equal(['pize', 'pizzeria', 'pizzicato', 'pizzle']);
     });
   });
 });  
