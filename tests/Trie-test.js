@@ -15,7 +15,7 @@ describe('TRIE', () => {
   describe('INSERT', () => {
     it('should add "pizza" as letters into the trie', () => {
 
-      trie.insert("pizza");
+      trie.insert('pizza');
       expect(trie.head.children.p.data).to.equal('p');
       expect(trie.head.children.p.children.i.data).to.equal('i');
     });
@@ -37,7 +37,7 @@ describe('TRIE', () => {
     });
     it('should check length++', () => {
       expect(trie.length).to.equal(0);
-      trie.insert("pizza");
+      trie.insert('pizza');
       expect(trie.length).to.equal(1);
       trie.insert('apple');
       expect(trie.length).to.equal(2);
@@ -45,7 +45,7 @@ describe('TRIE', () => {
   
     it('should return the word count entered', () => {
       trie.insert('apple');
-      trie.insert("pizza");
+      trie.insert('pizza');
       expect(trie.count()).to.equal(2);
     });
   });
@@ -92,11 +92,11 @@ describe('TRIE', () => {
       expect(trie.suggest('piz')).to.deep.equal(['pizzeria']);
     });
 
-    it('should delete/remove a word', () => {
+    it('should delete/remove a word from middle of suggestions', () => {
       trie.populate();
-      trie.suggest("piz");
+      trie.suggest('piz');
       expect(trie.suggest('piz')).to.deep.equal(['pize', 'pizza', 'pizzeria', 'pizzicato', 'pizzle']);
-      trie.delete("pizza");
+      trie.delete('pizza');
       expect(trie.suggest('piz')).to.deep.equal(['pize', 'pizzeria', 'pizzicato', 'pizzle']);
     });
   });
