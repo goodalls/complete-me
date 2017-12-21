@@ -67,7 +67,7 @@ describe('TRIE', () => {
   });
   
   describe('POPULATE', () => {
-    it('should', () => {
+    it('should populate dictionary into trie', () => {
       trie.populate();
       expect(trie.length).to.equal(235886);
       expect(trie.suggest('piz')).to.deep.equal(['pize', 'pizza', 'pizzeria', 'pizzicato', 'pizzle']);
@@ -80,6 +80,16 @@ describe('TRIE', () => {
       trie.insert('apple');
       expect(trie.isWordCheck('apple')).to.equal(true);
 
+    });
+  });
+
+  describe('FAVORED', () => {
+    it.only('should', () => {
+      trie.insert('pizza');
+      trie.insert('pizzeria');
+      expect(trie.suggest('piz')).to.deep.equal([ 'pizza', 'pizzeria']);
+      trie.selectFavored('pizzeria');
+      expect(trie.suggest('piz')).to.deep.equal([ 'pizzeria', 'pizza' ]);
     });
   });
 
