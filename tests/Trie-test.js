@@ -71,7 +71,8 @@ describe('TRIE', () => {
     it('should populate dictionary into trie', () => {
       trie.populate();
       expect(trie.length).to.equal(235886);
-      expect(trie.suggest('piz')).to.deep.equal(['pize', 'pizza', 'pizzeria', 'pizzicato', 'pizzle']);
+      expect(trie.suggest('piz')).to.deep.equal(['pize', 'pizza', 'pizzeria', 
+        'pizzicato', 'pizzle']);
     });
   
     it('should select favored higher number in suggestion', () => {
@@ -95,11 +96,14 @@ describe('TRIE', () => {
     it('should delete/remove a word from middle of suggestions', () => {
       trie.populate();
       trie.suggest('piz');
-      expect(trie.suggest('piz')).to.deep.equal(['pize', 'pizza', 'pizzeria', 'pizzicato', 'pizzle']);
+      expect(trie.suggest('piz')).to.deep.equal(['pize', 'pizza', 
+        'pizzeria', 'pizzicato', 'pizzle']);
       trie.delete('pizza');
-      expect(trie.suggest('piz')).to.deep.equal(['pize', 'pizzeria', 'pizzicato', 'pizzle']);
+      expect(trie.suggest('piz')).to.deep.equal(['pize', 'pizzeria', 
+        'pizzicato', 'pizzle']);
       trie.delete('pizzle');
-      expect(trie.suggest('piz')).to.deep.equal(['pize', 'pizzeria', 'pizzicato']);
+      expect(trie.suggest('piz')).to.deep.equal(['pize', 'pizzeria', 
+        'pizzicato']);
     });
   });
 });  
