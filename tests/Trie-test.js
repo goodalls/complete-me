@@ -43,9 +43,7 @@ describe('TRIE', () => {
       trie.insert('apple');
       expect(trie.length).to.equal(2);
     });
-  });
-
-  describe('COUNT', () => {
+  
     it('should return the word count entered', () => {
       trie.insert('apple');
       trie.insert("pizza");
@@ -64,27 +62,20 @@ describe('TRIE', () => {
       expect(trie.suggest('piz')).to.deep.equal([ 'pizza', 'pizzeria' ]);
       expect(trie.suggest('ap')).to.deep.equal([ 'apple', 'appitizer' ]);
     });
-  });
   
-  describe('POPULATE', () => {
+    it('should return true or false if word is entered', ()=> {
+      expect(trie.isWordCheck('apple')).to.equal(false);
+      trie.insert('apple');
+      expect(trie.isWordCheck('apple')).to.equal(true);
+    });
+
     it('should populate dictionary into trie', () => {
       trie.populate();
       expect(trie.length).to.equal(235886);
       expect(trie.suggest('piz')).to.deep.equal(['pize', 'pizza', 'pizzeria', 'pizzicato', 'pizzle']);
     });
-  });
-
-  describe('isWordCheck', ()=>{
-    it('should return true or false if word is entered', ()=> {
-      expect(trie.isWordCheck('apple')).to.equal(false);
-      trie.insert('apple');
-      expect(trie.isWordCheck('apple')).to.equal(true);
-
-    });
-  });
-
-  describe('FAVORED', () => {
-    it('should', () => {
+  
+    it('should select favored higher number in suggestion', () => {
       trie.insert('pizza');
       trie.insert('pizzeria');
       expect(trie.suggest('piz')).to.deep.equal([ 'pizza', 'pizzeria']);
@@ -94,7 +85,7 @@ describe('TRIE', () => {
   });
 
   describe('DELETE', () => {
-    it('should remove a word', () => {
+    it('should delete/remove a word', () => {
       trie.insert('pizza');
       trie.insert('pizzeria');
       expect(trie.suggest('piz')).to.deep.equal([ 'pizza', 'pizzeria']);
@@ -102,6 +93,4 @@ describe('TRIE', () => {
       expect(trie.suggest('piz')).to.deep.equal(['pizzeria']);
     });
   });
-
-});//end of trie
-
+});  
